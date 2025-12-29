@@ -42,7 +42,6 @@ func DFSIteratif(g Graph, start int, n int) {
 func benchmarkDFS(g Graph, start int) (int64, int64) {
 	const runs = 10000
 
-	// warm-up
 	{
 		visited := make(map[int]bool)
 		DFSRekursif(g, start, visited)
@@ -87,7 +86,6 @@ func main() {
 	fmt.Printf("DFS Rekursif : %d µs\n", rec)
 	fmt.Printf("DFS Iteratif : %d µs\n", iter)
 
-	// simpan ke CSV
 	f, _ := os.OpenFile("data.csv", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
 	defer f.Close()
 	fmt.Fprintf(f, "%d,%d,%d\n", n, rec, iter)
